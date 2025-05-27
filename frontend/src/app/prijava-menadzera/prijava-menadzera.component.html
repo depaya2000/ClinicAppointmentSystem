@@ -1,0 +1,49 @@
+
+<html lang="en">
+    <head>
+        <!-- Ostali meta tagovi i stilovi -->
+    </head>
+    <body>
+        <header>
+          <nav>
+            <ul>
+                <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+            </ul>
+    </nav>
+    </header>
+    <main>
+        <div class="row">
+            <div class="col">
+            <h2>Ulogujte se kao menadzer</h2>
+            <form>
+                <div class="table-responsive">
+                <table>
+                    <tr>
+                        <td>Korisnicko ime:</td>
+                        <td>
+                            <input type='text' name='korisnickoIme' [(ngModel)]='korisnickoIme'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lozinka:</td>
+                        <td>
+                            <input type='password' name='lozinka' [(ngModel)]='lozinka'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>
+                            <button (click)="login()">Prijava</button>
+                        </td>
+                    </tr>
+                </table>
+                </div>
+            </form>
+            <span class="greska">{{greska}}</span>
+          </div> 
+        </div>
+        </main>
+        <footer>
+          <p>&copy; 2023 Ordinacija Zdravlje</p>
+        </footer>
+    </body>
+    </html>

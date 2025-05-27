@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <!-- Ostali meta tagovi i stilovi -->
+</head>
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+          <li><a href="lekar">Profil</a></li>
+          <li><a href="preglediLekar">Pregledi</a></li>
+          <li><a href="razno">Razno</a></li>
+          <li><a href="promenaLozinke">Promena lozinke</a></li>
+          <li><button (click)="logout()">Odjavi se</button></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+      <br/>
+      <div class="row">
+      <div *ngIf="!ulogovan?.azuriranje" class="col">
+      <h2>Osnovne informacije o lekaru:</h2>
+      <img src='http://localhost:4000/uploads/{{ulogovan.profilnaSlika}}' alt="Profilna slika" class="profilnaSlika"> <br/>
+      Ime: {{ulogovan.ime}} <br/>
+      Prezime: {{ulogovan.prezime}} <br/>
+      Adresa: {{ulogovan.adresa}} <br/>
+      I-mejl adresa: {{ulogovan.mejl}} <br/>
+      Kontakt telefon: {{ulogovan.telefon}} <br/>
+      Broj licence: {{ulogovan.brojLicence}} <br/>
+      Specijalizacija: {{ulogovan.specijalizacija}} <br/>
+      Ogranak: {{ulogovan.ogranak}} <br/>
+      <button (click)="azurirajLekara()">Ažuriraj profil</button>
+      <p> {{message}} </p>
+      </div>
+      <div *ngIf="ulogovan?.azuriranje" class="col">
+        <h2>Osnovne informacije o pacijentu:</h2>
+        <input type="file" name="image" accept="image/jpeg, image/png" (change)="onFileSelected($event)"><br/>
+        Ime: <input [(ngModel)]="ulogovan.ime" /><br/>
+        Prezime: <input [(ngModel)]="ulogovan.prezime" /><br/>
+        Adresa: <input [(ngModel)]="ulogovan.adresa" /><br/>
+        I-mejl adresa: {{ulogovan.mejl}} <br/>
+        Kontakt telefon: <input [(ngModel)]="ulogovan.telefon" /><br/>
+        Broj licence:  <input [(ngModel)]="ulogovan.brojLicence" /><br/>
+        Specijalizacija: <input [(ngModel)]="ulogovan.specijalizacija" /> <br/>
+        Ogranak: {{ulogovan.ogranak}} <br/>
+        <button (click)="potvrdiIzmeneLekara()">Potvrdi izmene</button>
+        <p class="greska">{{message}}</p> 
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+        <form>
+            <h2>Odaberite vrstu pregleda koju želite da obavljate</h2>
+            <select *ngIf="vrstaPregleda" name="izabraniPregledi" [(ngModel)]="izabraniPregledi" multiple>
+              <option *ngFor="let p of vrstaPregleda.pregledi" [value]="p">{{ p.naziv }}</option>
+            </select>
+            <button (click)="odaberiPreglede()">Sačuvaj izbor</button>
+          </form>
+          <p class="greska">{{message1}}</p>
+      </div>
+    </div>
+    </main>
+    <footer>
+      <p>&copy; 2023 Ordinacija Zdravlje</p>
+    </footer>
+</body>
+</html>

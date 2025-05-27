@@ -1,0 +1,63 @@
+
+
+  <html lang="en">
+    <head>
+        <!-- Ostali meta tagovi i stilovi -->
+    </head>
+    <body>
+        <header>
+          <nav>
+            <ul *ngIf="tip == 'pacijent'">
+              <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+              <li><a href="pacijent">Profil</a></li>
+              <li><a href="sviLekari">Lekari</a></li>
+              <li><a href="preglediPacijenta">Pregledi</a></li>
+              <li><a href="obavestenja">Obavestenja</a></li>
+              <li><a href="promenaLozinke">Promena lozinke</a></li>
+              <li><button (click)="logout()">Odjavi se</button></li>
+            </ul>
+            <ul *ngIf="tip == 'lekar'">
+              <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+              <li><a href="lekar">Profil</a></li>
+              <li><a href="preglediLekar">Pregledi</a></li>
+              <li><a href="razno">Razno</a></li>
+              <li><a href="promenaLozinke">Promena lozinke</a></li>
+              <li><button (click)="logout()">Odjavi se</button></li>
+            </ul>
+            <ul *ngIf="tip == 'menadzer'">
+              <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+              <li><a href="menadzer">Profil</a></li>
+              <li><a href="zahtevi">Zahtevi</a></li>
+              <li><a href="uredi">Uredi</a></li>
+              <li><a href="promenaLozinke">Promena lozinke</a></li>
+              <li><button (click)="logout()">Odjavi se</button></li>
+            </ul>
+    </nav>
+    </header>
+    <main>
+        <div class="row">
+          <div class="col">
+            <h4>Promena lozinke:</h4>
+            <form>
+                <label>Stara lozinka:  </label>
+                <input type="password" name='staraLozinka' [(ngModel)]="staraLozinka" placeholder="Unesite staru lozinku">
+                <br/>
+              
+                <label>Nova lozinka:  </label>
+                <input type="password" name='novaLozinka' [(ngModel)]="novaLozinka" placeholder="Unesite novu lozinku">
+              
+                <br/>            
+                <input type="password" name='ponovnaNovaLozinka' [(ngModel)]="ponovnaNovaLozinka" placeholder="Unesite ponovo novu lozinku">
+                <br/>
+                <br/>
+                <button (click)="promeniLozinku()">Promeni lozinku</button>
+              </form>     
+            <p class="greska">{{message}}</p>    
+          </div> 
+        </div>
+        </main>
+        <footer>
+          <p>&copy; 2023 Ordinacija Zdravlje</p>
+        </footer>
+    </body>
+    </html>

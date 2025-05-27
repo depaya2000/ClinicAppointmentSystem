@@ -1,0 +1,97 @@
+
+    <html lang="en">
+        <head>
+            <!-- Ostali meta tagovi i stilovi -->
+        </head>
+        <body>
+            <header>
+              <nav>
+                <ul>
+                  <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+                  <li><a href="pacijent">Profil</a></li>
+                  <li><a href="sviLekari">Lekari</a></li>
+                  <li><a href="preglediPacijenta">Pregledi</a></li>
+                  <li><a href="obavestenja">Obavestenja</a></li>
+                  <li><a href="promenaLozinke">Promena lozinke</a></li>
+                  <li><button (click)="logout()">Odjavi se</button></li>
+                </ul>
+        </nav>
+        </header>
+        <main>
+                <div class="row">
+                    <div class="col">
+                    <h2>Informacije o lekaru:</h2>
+                    <img src="http://localhost:4000/uploads/{{lekar.profilnaSlika}}" class="profilnaSlika"> <br/>
+                    Ime: {{lekar.ime}} <br/>
+                    Prezime: {{lekar.prezime}} <br/>
+                    Adresa: {{lekar.adresa}} <br/>
+                    Telefon: {{lekar.telefon}} <br/>
+                    I-mejl adresa: {{lekar.mejl}} <br/>
+                    Specijalizacija:{{lekar.specijalizacija}} <br/>
+                    Broj licence:{{lekar.brojLicence}} <br/>
+                    Ogranak:{{lekar.ogranak}} <br/>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col">
+                        <br>
+                        <h4>Svi pregledi lekara:</h4>
+                        <div class="table-responsive">
+                        <table border="1">
+                          <tr>
+                            <th>   Naziv   </th>
+                            <th>   Trajanje   </th>
+                            <th>   Cena   </th>
+                          </tr>
+                          <tr *ngFor='let p of lekar.sviPregledi'>
+                            <td>{{p.naziv}}</td>
+                            <td>{{p.trajanje}}</td>
+                            <td>{{p.cena}}</td>
+                          </tr>
+                        </table>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                        <h2>Zakazite pregled kod lekara:</h2>
+                        <form>
+                            <div class="table-responsive">
+                            <table>
+                                <tr>
+                                    <td>Vrsta pregleda:</td>
+                                    <td>
+                                        <select name='izabraniPregled' [(ngModel)]='izabraniPregled' >
+                                            <option *ngFor="let p of lekar.sviPregledi">{{p.naziv}}</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Datum pregleda:</td>
+                                    <td>
+                                        <input type='date' name='datumPregleda' [(ngModel)]='datumPregleda'>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Vreme pregleda:</td>
+                                    <td>
+                                        <input type='time' name='vremePregleda' [(ngModel)]='vremePregleda'>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan='2'>
+                                        <button (click)="zakaziPregled()">Zakazi</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        </form>
+                        <span class='greska'>{{message}}</span>
+                    </div>
+                    </div>
+            </main>
+            <footer>
+              <p>&copy; 2023 Ordinacija Zdravlje</p>
+            </footer>
+        </body>
+        </html>

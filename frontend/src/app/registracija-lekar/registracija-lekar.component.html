@@ -1,0 +1,114 @@
+
+<html lang="en">
+    <head>
+            <!-- Ostali meta tagovi i stilovi -->
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+                    <li><a href="menadzer">Profil</a></li>
+                    <li><a href="zahtevi">Zahtevi</a></li>
+                    <li><a href="uredi">Uredi</a></li>
+                    <li><a href="promenaLozinke">Promena lozinke</a></li>
+                    <li><button (click)="logout()">Odjavi se</button></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="row">
+                <div class="col">
+                <h2>Registracija lekara</h2>
+                <hr/>
+                <form>
+                    <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <td>Korisnicko ime:</td>
+                            <td>
+                                <input type='text' name='korisnickoIme' [(ngModel)]='korisnickoIme'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lozinka:</td>
+                            <td>
+                                <input type='password' name='lozinka' [(ngModel)]='lozinka'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Unesite ponovo lozinku:</td>
+                            <td>
+                                <input type='password' name='ponovnaLozinka' [(ngModel)]='ponovnaLozinka'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ime:</td>
+                            <td>
+                                <input type='text' name='ime' [(ngModel)]='ime'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Prezime:</td>
+                            <td>
+                                <input type='text' name='prezime' [(ngModel)]='prezime'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Adresa:</td>
+                            <td>
+                                <input type='text' name='adresa' [(ngModel)]='adresa'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Kontakt telefon:</td>
+                            <td>
+                                <input type='text' name='telefon' [(ngModel)]='telefon'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mejl adresa:</td>
+                            <td>
+                                <input type='text' name='mejl' [(ngModel)]='mejl'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ogranak:</td>
+                            <td>
+                                <input type='text' name='ogranak' [(ngModel)]='ogranak'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Broj licence:</td>
+                            <td>
+                                <input type='text' name='brojLicence' [(ngModel)]='brojLicence'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Specijalizacija:</td>
+                            <td>
+                                <input type='text' name='specijalizacija' [(ngModel)]='specijalizacija'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Profilna slika:</label> </td>
+                            <td><input type="file" name="image" accept="image/jpeg, image/png" (change)="onFileSelected($event)"></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>
+                                <button (click)="registerDoctor()">Registruj lekara</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                </form>
+                <br/>
+                <p class="greska">{{message}}</p> 
+             </div>
+            </div> 
+        </main>
+        <footer>
+            <p>&copy; 2023 Ordinacija Zdravlje</p>
+        </footer>
+    </body>
+</html>

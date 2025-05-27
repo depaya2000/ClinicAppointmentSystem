@@ -1,0 +1,52 @@
+
+<html lang="en">
+<head>
+    <!-- Ostali meta tagovi i stilovi -->
+</head>
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+          <li><a href="pacijent">Profil</a></li>
+          <li><a href="sviLekari">Lekari</a></li>
+          <li><a href="preglediPacijenta">Pregledi</a></li>
+          <li><a href="obavestenja">Obavestenja</a></li>
+          <li><a href="promenaLozinke">Promena lozinke</a></li>
+          <li><button (click)="logout()">Odjavi se</button></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+      <br/>
+      <div class="row">
+      <div *ngIf="!ulogovan.azuriranje" class="col">
+      <h2>Osnovne informacije o pacijentu:</h2>
+      <img src='http://localhost:4000/uploads/{{ulogovan.slika}}' alt="Profilna slika" class="profilnaSlika"> <br/>
+      Ime: {{ulogovan.ime}} <br/>
+      Prezime: {{ulogovan.prezime}} <br/>
+      Adresa: {{ulogovan.adresa}} <br/>
+      I-mejl adresa: {{ulogovan.mejl}} <br/>
+      Kontakt telefon: {{ulogovan.telefon}} <br/>
+      <button (click)="azurirajPacijenta()">Ažuriraj profil</button>
+      <p class="greska">{{message}}</p> 
+      </div>
+      
+      <div *ngIf="ulogovan.azuriranje">
+      <h2>Osnovne informacije o pacijentu:</h2>
+      <input type="file" name="image" accept="image/jpeg, image/png" (change)="onFileSelected($event)"><br/>
+      Ime: <input [(ngModel)]="ulogovan.ime" /><br/>
+      Prezime: <input [(ngModel)]="ulogovan.prezime" /><br/>
+      Adresa: <input [(ngModel)]="ulogovan.adresa" /><br/>
+      Telefon: <input [(ngModel)]="ulogovan.telefon" /><br/>
+      Mejl: <input [(ngModel)]="ulogovan.mejl" /><br/>
+      <button (click)="potvrdiIzmenePacijenta()">Potvrdi izmene</button>
+      <p class="greska">{{message}}</p> 
+      </div>
+    </div>
+    </main>
+    <footer>
+      <p>&copy; 2023 Ordinacija Zdravlje</p>
+    </footer>
+</body>
+</html>

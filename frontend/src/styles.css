@@ -1,0 +1,216 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Stil za body kako bismo postavili fleksboks kontejner */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Minimum visina tela će ispuniti celu visinu prozora pregledača */
+    margin: 0;
+  }
+  
+  /* Stil za main kako bismo sekciju ispod zaglavlja ispunili preostalim prostorom */
+  main {
+    flex-grow: 1; /* Prostor za rast glavnog sadržaja */
+  }
+  
+
+  /* Stilizacija glavnog div kontejnera */
+div:not(.table-responsive):not(.col):not(.opisOrdinacije):not(.carousel-item):not(.carousel-inner):not(.reg):not(.carousel slide):not(.prvi) {
+    background-color: #fff;
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+    /* Stilizacija slika profilnih slika lekara */
+    .profilnaSlika {
+        max-width: 100px;
+        height: auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+   /* Naslov za informacije o lekaru */
+   h2,h4 {
+    font-size: 24px;
+    color: rgb(144, 0, 0);
+    margin-bottom: 10px;
+  }
+   /* Stil za naslov dobrodošlice */
+   h1 {
+    font-size: 34px;
+    color: rgb(144, 0, 0);
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+    /* Stil za kontakt informacije */
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      
+
+   /* Stilizacija za link za registraciju pacijenta */
+a.router-link {
+    text-decoration: none; /* Uklanja podvučenost linka */
+    color: rgb(144, 0, 0); /* Boja teksta linka */
+    font-weight: bold; /* Debljina teksta */
+    transition: color 0.3s; /* Efekat tranzicije boje teksta */
+  }
+  
+  /* Stilizacija za hover efekat (menja boju teksta pri hoveru) */
+  a.router-link:hover {
+    color: #001326; /* Nova boja teksta pri hoveru */
+    text-decoration: underline; /* Podvučenost teksta pri hoveru */
+  } 
+
+  button {
+    background-color: rgb(144, 0, 0);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: lightcoral;
+  }
+
+
+    /* Stilizacija input polja za datum i vreme */
+    input[type="date"],
+    input[type="time"],
+    [type="text"], [type="password"], [type="number"] {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Horizontalna linija */
+    hr {
+        margin-top: 20px;
+        border: 0;
+        border-top: 1px solid #ccc;
+      }
+
+   /* Stilizacija select polja */
+   select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  textarea {
+    width: 100%; /* Širina će popuniti roditeljski element */
+    height: 80px; /* Visina */
+    padding: 10px; /* Odstupanje unutar elementa */
+    font-size: 16px; /* Veličina fonta */
+    border: 1px solid #ccc; /* Oznaka granice */
+    border-radius: 4px; /* Zaobljeni ivice */
+    resize: vertical; /* Dozvoljava vertikalno proširivanje */
+  }
+
+   /* Stilizacija tabele sa lekarima */
+   table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: rgb(144, 0, 0);
+    color: #fff;
+    cursor: pointer; /* Dodajemo cursor pointer da označi da su kolone klikabilne */
+  }
+  
+  /* Stil za header */
+  header {
+    background-color: rgb(144, 0, 0); /* Boja pozadine */
+    color: #fff; /* Boja teksta */
+    padding: 10px 0; /* Unutarnji razmak */
+  }
+  
+  header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+/* Stil za pomeranje slike skroz levo */
+header nav ul li a img {
+    margin-left: 0;
+}
+
+  header nav ul li {
+    display: inline;
+    margin-right: 20px;
+    margin-left: 15px;
+  }
+
+
+  
+  header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-style: inherit;
+  }
+
+/* Stil za footer */
+footer {
+    background-color: rgb(144, 0, 0);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.neprocitano {
+    background-color: #f5a3a3;
+    font-weight: bold;
+}
+
+.greska{
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    color: red;
+  }
+
+  /* Stilizacija poruke*/
+.poruka{
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    color: black;
+  }
+
+    /* Stil za div sa showForm */
+.show-form {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }

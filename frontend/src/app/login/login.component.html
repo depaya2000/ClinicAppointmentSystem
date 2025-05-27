@@ -1,0 +1,172 @@
+<header>
+  <nav class="d-flex justify-content-between align-items-center">
+    <ul class="list-unstyled m-0" *ngIf="role == null">
+      <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+  </ul>
+  <ul class="list-unstyled m-0" *ngIf="role == null">
+      <li><a routerLink="" (click)="prijava=true">Prijava</a></li>
+      <li><a routerLink="prijavaMenadzera">Menadzer</a></li>
+  </ul>
+    <ul *ngIf="role == 'pacijent'" class="list-unstyled m-0 d-flex justify-content-between w-100">
+        <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+        <li><a href="pacijent">Profil</a></li>
+        <li><a href="sviLekari">Lekari</a></li>
+        <li><a href="preglediPacijenta">Pregledi</a></li>
+        <li><a href="obavestenja">Obavestenja</a></li>
+        <li><a href="promenaLozinke">Promena lozinke</a></li>
+        <li><button (click)="logout()">Odjavi se</button></li>
+    </ul>
+    <ul *ngIf="role == 'lekar'" class="list-unstyled m-0 d-flex justify-content-between w-100">
+        <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+        <li><a href="lekar">Profil</a></li>
+        <li><a href="preglediLekar">Pregledi</a></li>
+        <li><a href="razno">Razno</a></li>
+        <li><a href="promenaLozinke">Promena lozinke</a></li>
+        <li><button (click)="logout()">Odjavi se</button></li>
+    </ul>
+    <ul *ngIf="role == 'menadzer'" class="list-unstyled m-0 d-flex justify-content-between w-100">
+        <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+        <li><a href="menadzer">Profil</a></li>
+        <li><a href="zahtevi">Zahtevi</a></li>
+        <li><a href="uredi">Uredi</a></li>
+        <li><a href="promenaLozinke">Promena lozinke</a></li>
+        <li><button (click)="logout()">Odjavi se</button></li>
+    </ul>
+</nav>
+</header>
+<main class="container">
+  <div *ngIf="prijava">
+    <h3>Ulogujte se</h3>
+    <form>
+        <table>
+            <tr>
+                <td>Korisnicko ime:</td>
+                <td>
+                    <input type='text' name='korisnickoIme' [(ngModel)]='korisnickoIme'>
+                </td>
+            </tr>
+            <tr>
+                <td>Lozinka:</td>
+                <td>
+                    <input type='password' name='lozinka' [(ngModel)]='lozinka'>
+                </td>
+            </tr>
+            <tr>
+                <td>Tip:</td>
+                <td>
+                   <select name="tip" [(ngModel)]='tip' >
+                     <option value="pacijent">Pacijent</option>
+                     <option value="lekar">Lekar</option>
+                   </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2'>
+                    <button (click)="login()">Prijava</button>
+                    <span class="greska">{{greska}}</span>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div class="reg">
+    Novi pacijent? <a routerLink="registracija">Registruj se</a><br/>
+    </div>
+    </div>
+    <br/>
+<div class="prvi">
+    <h1>Dobrodošli u našu ordinaciju</h1>
+    <div class="opisOrdinacije">
+    Naziv: Lekarska ordinacija Zdravlje <br/>
+    Sediste: Brus, ul. Kralja Milana I br. 9 37220 Brus <br/>
+    Osnivac: Republika Srbija – Ministarstvo zdravlja <br/>
+    Direktor: Dr Petar Petrovic, specijalista otorinolaringologije <br/>
+    Telefon: 037 3 855 695 <br/>
+    Faks: 037 3 855 695 <br/>
+    E-mail: lozdravlje@mts.rs <br/>
+    </div>
+    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#imageCarousel" data-bs-slide-to="1"></li>
+        <li data-bs-target="#imageCarousel" data-bs-slide-to="2"></li>
+        <li data-bs-target="#imageCarousel" data-bs-slide-to="3"></li>
+        <li data-bs-target="#imageCarousel" data-bs-slide-to="4"></li>
+      </ol>
+  
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/assets/ordinacija1.jpg" alt="Slika ordinacije 1" class="slikaOrdinacije" >
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/ordinacija2.jpg" alt="Slika ordinacije 2" class="slikaOrdinacije">
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/ordinacija3.jpg" alt="Slika ordinacije 3"  class="slikaOrdinacije">
+        </div>
+        <div class="carousel-item">
+            <img src="/assets/ordinacija4.jpg" alt="Slika ordinacije 4" class="slikaOrdinacije">
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/ordinacija5.jpg" alt="Slika ordinacije 5" class="slikaOrdinacije">
+          </div>
+      </div>
+  
+      <!-- Kontrole za prelazak -->
+      <a class="carousel-control-prev" href="#imageCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Prethodna</span>
+      </a>
+      <a class="carousel-control-next" href="#imageCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Sledeća</span>
+      </a>
+    </div>
+  </div>
+ 
+  <div>
+    <h4>Pretraga lekara:</h4>
+    <form>
+        <label>Ime:</label>
+        <input type="text" name='imePretraga' [(ngModel)]="imePretraga">
+        <br>
+      
+        <label>Prezime:</label>
+        <input type="text" name='prezimePretraga' [(ngModel)]="prezimePretraga">
+        <br>
+      
+        <label>Specijalizacija:</label>
+        <input type="text" name='specijalizacijaPretraga' [(ngModel)]="specijalizacijaPretraga">
+        <br>
+      
+        <button (click)="pretraziLekare()">Pretraži</button>
+      </form>     
+  </div>
+
+<div>
+<h2>Lekari</h2>
+<table>
+  <thead>
+  <tr>
+    <th (click)="sortirajLekare('ime')">Ime</th>
+    <th (click)="sortirajLekare('prezime')">Prezime</th>
+    <th (click)="sortirajLekare('specijalizacija')">Specijalizacija</th>
+    <th>Profilna slika</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor='let p of pretragaLekari'>
+    <td>{{p.ime}}</td>
+    <td>{{p.prezime}}</td>
+    <td>{{p.specijalizacija}}</td>
+    <td><img src='http://localhost:4000/uploads/{{ p.profilnaSlika }}' alt="Profilna slika {{p.ime}}" class="profilnaSlika" ></td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+</main>
+<footer>
+    <p>&copy; 2023 Ordinacija Zdravlje</p>
+</footer>

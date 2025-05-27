@@ -1,0 +1,55 @@
+
+.slikaOrdinacije{
+    width: 1500px;
+    height: 600px;
+}
+
+
+/* Stil za div sa informacijama o ordinaciji */
+div.opisOrdinacije {
+    background-color: rgb(144, 0, 0); /* Pozadinska boja */
+    padding: 20px; /* Unutarnji razmak */
+    border: 1px solid #ddd; /* Svetlo siva ivica */
+    border-radius: 5px; /* Zaobljeni uglovi */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sjena */
+    margin-bottom: 20px; /* Razmak ispod elementa */
+    font-size: 20px; /* Veličina fonta */
+    color: white;
+}
+
+/* Stil za naslov */
+div.opisOrdinacije h1 {
+    font-size: 24px; /* Veći font za naslov */
+    margin-bottom: 10px; /* Razmak ispod naslova */
+}
+
+/* Stil za pojedinačne informacije */
+div.opisOrdinacije p {
+    margin: 10px 0; /* Razmak između pojedinačnih informacija */
+    line-height: 1.5; /* Razmak između redova */
+}
+
+
+/* Osnovni stil za stranicu */
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  
+  div.reg {
+    font-size: 24px; 
+  }
+
+
+  
+
+
+
+
+
+
+   
+  
+  

@@ -1,0 +1,169 @@
+<html lang="en">
+<head>
+    <!-- Ostali meta tagovi i stilovi -->
+</head>
+<body>
+    <header>
+      <nav>
+        <ul>
+            <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+            <li><a href="menadzer">Profil</a></li>
+            <li><a href="zahtevi">Zahtevi</a></li>
+            <li><a href="uredi">Uredi</a></li>
+            <li><a href="promenaLozinke">Promena lozinke</a></li>
+          <li><button (click)="logout()">Odjavi se</button></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+        <div class="row">
+            <div class="col">
+            <h2>Dodaj novu specijalizaciju</h2>
+            <form>
+                <div class="table-responsive">
+                <table>
+                    <tr>
+                        <td>Specijalizacija:</td>
+                        <td>
+                            <input type='text' name='specijalizacija' [(ngModel)]='specijalizacija'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>
+                            <button (click)="dodajSpecijalizaciju()">Dodaj</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </form>
+            <p class="greska">{{message1}}</p> 
+        </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            <br>
+            <h2>Pregledi</h2>
+            <div class="table-responsive">
+            <table border="1">
+              <tr>
+                <th>Specijalizacija</th>
+                <th>Vrste pregleda za specijalizaciju</th>
+              </tr>
+                <tr *ngFor='let v of vrstePregleda'>
+                    <td>{{ v.specijalizacija }}</td>
+                    <td *ngIf="!v.azuriranje">
+                        <ul>
+                            <li *ngFor="let pregled of v.pregledi">
+                               Naziv: {{ pregled.naziv }}<br/>
+                               Cena: {{ pregled.cena }}<br/>
+                               Trajanje: {{ pregled.trajanje }}
+                            </li>
+                        </ul>
+                    </td>
+                    <td *ngIf="v.azuriranje">
+                        <ul>
+                            <li *ngFor="let pregled of v.pregledi">
+                               Naziv: <input type="text" [(ngModel)]="pregled.naziv" /><br/>
+                               Cena: <input type="number" [(ngModel)]="pregled.cena" /><br/>
+                               Trajanje:  <input type="number" [(ngModel)]="pregled.trajanje" />
+                            </li>
+                        </ul>
+                    </td>
+                    <td *ngIf="!v.azuriranje">
+                                <button (click)="azurirajVrstuPregleda(v)">Ažuriraj</button>
+                    </td>
+                    <td *ngIf="v.azuriranje">
+                                <button (click)="potvrdiIzmene(v)">Potvrdi izmene</button>
+                    </td>
+                            <td>
+                                <ul>
+                                    <li *ngFor="let pregled of v.pregledi">
+                                        <button (click)="obrisiVrstuPregleda(v,pregled)">Obrisi</button>
+                                    </li>
+                                </ul>
+                            </td>
+                     </tr>
+                </table>
+            </div>
+            <p class="greska">{{message3}}</p> 
+             </div>
+            </div>
+        <div class="row">
+            <div class="col">
+            <h2>Dodaj novu vrstu pregleda</h2>
+            <form>
+                <div class="table-responsive">
+                <table>
+                    <tr>
+                        <td>Naziv:</td>
+                        <td>
+                            <input type='text' name='nazivPregleda' [(ngModel)]='nazivPregleda'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Specijalizacija:</td>
+                        <td>
+                            <select name="specijalizacija" [(ngModel)]="specijalizacijaPregleda">
+                                <option *ngFor='let v of vrstePregleda' >{{v.specijalizacija}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cena:</td>
+                        <td>
+                            <input type='number' name='cena' [(ngModel)]='cenaPregleda'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Trajanje(u minutima):</td>
+                        <td>
+                            <input type='number' name='trajanje' [(ngModel)]='trajanjePregleda'>min.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>
+                            <button (click)="dodajVrstuPregleda()">Dodaj</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </form>
+            <p class="greska">{{message2}}</p> 
+        </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            <h2>Objavi novu akciju ili promociju</h2>
+            <form>
+                <div class="table-responsive">
+                <table>
+                    <tr>
+                        <td>Naslov:</td>
+                        <td>
+                            <input type='text' name='naslovObavestenja' [(ngModel)]='naslovObavestenja'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sadrzaj:</td>
+                        <td>
+                            <textarea name="tekstObavestenja"  [(ngModel)]='tekstObavestenja'></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>
+                            <button (click)="posaljiObavestenje()">Objavi</button>
+                        </td>
+                    </tr>
+                </table>
+                <p class="greska">{{message3}}</p> 
+            </div>
+            </form>
+        </div>
+    </div>
+    </main>
+    <footer>
+      <p>&copy; 2023 Ordinacija Zdravlje</p>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+    <!-- Ostali meta tagovi i stilovi -->
+</head>
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+          <li><a href="lekar">Profil</a></li>
+          <li><a href="preglediLekar">Pregledi</a></li>
+          <li><a href="razno">Razno</a></li>
+          <li><a href="promenaLozinke">Promena lozinke</a></li>
+          <li><button (click)="logout()">Odjavi se</button></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+        <div class="row">
+          <div class="col">
+        <h2>Naredna 3 pregleda:</h2>
+        <div class="table-responsive">
+        <table>
+          <tr>
+            <th>Naziv</th>
+            <th>Datum pregleda</th>
+            <th>Vreme pregleda</th>
+          </tr>
+          <tr *ngFor='let p of sortirajPregledePoDatumu(ulogovan.zakazaniPregledi)'>
+            <td><a routerLink="kartonPacijenta" (click)="zapamtiPacijenta(p)">{{p.naziv}}</a></td>
+            <td>{{ (p.datum.toString()).slice(0, 10) }}</td>
+            <td>{{p.vreme}}</td>
+            <td><button (click)="prikaziUnosObavestenja(p)">Otkazi</button></td>
+          </tr>
+          </table>
+        </div>
+        </div>
+        </div>
+        <section *ngFor='let p of ulogovan.zakazaniPregledi' [ngClass]="{'show-form': p.showForm1}">
+          <form *ngIf="p.showForm1">
+            <h2>Unos obavestenja pacijentu o otkazivanju pregleda:</h2>
+            <p>Pacijent:{{pacijent}} </p>
+            <p>Pregled: {{p.naziv}}</p>
+            <p>Datum: {{ (p.datum.toString()).slice(0, 10) }}</p>
+            <p>Vreme: {{p.vreme}}</p>
+            <label for="naslov">Naslov:</label>
+            <input type="text" id="naslov" name="naslov" [(ngModel)]="naslovObavestenja" required><br/>
+            <label for="razlogOtkazivanja">Razlog otkazivanja:</label>
+            <textarea id="razlogOtkazivanja" name="razlogOtkazivanja" [(ngModel)]="razlogOtkazivanja" required></textarea><br/>
+            <button (click)="posaljiObavestenje(p)">Posalji</button>
+          </form>
+        </section>
+
+        <div class="row">
+          <div class="col">
+          <h2>Pregledi koji nemaju izvestaj:</h2>
+          <div class="table-responsive">
+          <table border="1">
+            <tr>
+              <th>Naziv</th>
+              <th>Datum pregleda</th>
+              <th>Vreme pregleda</th>
+            </tr>
+            <tr *ngFor='let p of ulogovan.zakazaniPregledi'>
+                <td *ngIf="!p.imaIzvestaj && isPregledProsao(p)">{{p.naziv}}</td>
+                <td *ngIf="!p.imaIzvestaj && isPregledProsao(p)">{{ (p.datum.toString()).slice(0, 10) }}</td>
+                <td *ngIf="!p.imaIzvestaj && isPregledProsao(p)">{{p.vreme}}</td>
+                <td *ngIf="!p.imaIzvestaj && isPregledProsao(p)"> 
+                  <button (click)="prikaziUnosIzvestaja(p)">Unesi izveštaj</button>
+                </td>
+            </tr>
+          </table>
+        </div>
+        </div>
+        </div>
+              <section *ngFor='let p of ulogovan.zakazaniPregledi' [ngClass]="{'show-form': p.showForm}">
+                <form *ngIf="p.showForm">
+                  <h2>Unos izveštaja:</h2>
+                  <p>Pacijent:{{pacijent}} </p>
+                  <p>Datum: {{ (p.datum.toString()).slice(0, 10) }}</p>
+                  <p>Vreme: {{p.vreme}}</p>
+                  <label for="razlogDolaska">Razlog dolaska:</label>
+                  <textarea id="razlogDolaska" name="razlogDolaska" [(ngModel)]="razlogDolaska" required></textarea><br/>
+                  <label for="dijagnoza">Dijagnoza:</label>
+                  <textarea id="dijagnoza" name="dijagnoza" [(ngModel)]="dijagnoza" required></textarea><br/>
+                  <label for="terapija">Preporučena terapija:</label>
+                  <textarea id="terapija" name="terapija" [(ngModel)]="terapija" required></textarea><br/>
+                  <label for="datumKontrole">Datum narednog pregleda/kontrole:</label>
+                  <input type="date" id="datumKontrole" name="datumKontrole" [(ngModel)]="datumKontrole"><br/>
+                  <button (click)="dodajIzvestaj(p)">Sačuvaj</button>
+                </form>
+              </section>
+              <p class="greska">{{message}}</p>
+      </main>
+    <footer>
+      <p>&copy; 2023 Ordinacija Zdravlje</p>
+    </footer>
+</body>
+</html>
+

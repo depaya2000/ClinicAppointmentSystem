@@ -1,0 +1,16 @@
+
+button {
+  background-color: rgb(144, 0, 0);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: lightcoral;
+}
+
+
+

@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <!-- Ostali meta tagovi i stilovi -->
+</head>
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+          <li><a href="pacijent">Profil</a></li>
+          <li><a href="sviLekari">Lekari</a></li>
+          <li><a href="preglediPacijenta">Pregledi</a></li>
+          <li><a href="obavestenja">Obavestenja</a></li>
+          <li><a href="promenaLozinke">Promena lozinke</a></li>
+          <li><button (click)="logout()">Odjavi se</button></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+        <div>
+          <div class="col">
+        <h2>Obavestenja</h2>
+        <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <th>  Posiljalac  </th>
+            <th> Naslov obavestenja</th>
+          </tr>
+          <tr *ngFor='let o of obavestenja' >
+            <td [class.neprocitano]="o.procitano==false">{{o.imePosiljaoca}}</td>
+            <td [class.neprocitano]="o.procitano==false">{{o.naslov}}</td>
+            <td> <button (click)="prikaziObavestenje(o)">Procitaj</button></td>
+          </tr>
+          </table>
+        </div>
+        </div>
+        </div>
+        <section class="row">
+            <div class="col">
+                <section *ngFor='let o of obavestenja'>
+                    <div *ngIf="o.showForm">
+                      <p>Naslov:{{o.naslov}} </p>
+                      <p>Posiljalac: {{o.imePosiljaoca}}</p>
+                      <p>Datum: {{o.tekst }}</p>
+                      <button (click)="zatvoriObavestenje(o)">Zatvori</button>
+                    </div>
+                  </section>
+            </div>
+        </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Ordinacija Zdravlje</p>
+    </footer>
+</body>
+</html>

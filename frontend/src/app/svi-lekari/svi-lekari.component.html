@@ -1,0 +1,72 @@
+<header>
+  <nav>
+      <ul>
+        <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+        <li><a href="pacijent">Profil</a></li>
+        <li><a href="sviLekari">Lekari</a></li>
+        <li><a href="preglediPacijenta">Pregledi</a></li>
+        <li><a href="obavestenja">Obavestenja</a></li>
+        <li><a href="promenaLozinke">Promena lozinke</a></li>
+        <li><button (click)="logout()">Odjavi se</button></li>
+      </ul>
+  </nav>
+  </header>
+  <main>
+    <div class="row">
+    <div class="col">
+    <h2>Lekari</h2>
+    <div class="table-responsive">
+    <table border="1">
+      <tr>
+        <th (click)="sortirajLekare('ime')">   Ime   </th>
+        <th (click)="sortirajLekare('prezime')">   Prezime   </th>
+        <th (click)="sortirajLekare('specijalizacija')">   Specijalizacija   </th>
+        <th>   Telefon   </th>
+        <th>   I-mejl adresa   </th>
+        <th>   Broj licence  </th>
+        <th (click)="sortirajLekare('ogranak')">   Ogranak   </th>
+        <th>   Profilna slika   </th>
+      </tr>
+      <tr *ngFor='let p of pretragaLekari'>
+        <td><a routerLink="profilLekara" (click)="zapamtiLekara(p)">{{p.ime}}</a></td>
+        <td><a routerLink="profilLekara" (click)="zapamtiLekara(p)">{{p.prezime}}</a></td>
+        <td>{{p.specijalizacija}}</td>
+        <td>{{p.telefon}}</td>
+        <td>{{p.mejl}}</td>
+        <td>{{p.brojLicence}}</td>
+        <td>{{p.ogranak}}</td>
+        <td><img src='http://localhost:4000/uploads/{{ p.profilnaSlika }}' alt="Profilna slika {{p.ime}}" class="profilnaSlika" (click)="zapamtiLekara(p)" routerLink="profilLekara"></td>
+      </tr>
+    </table>
+  </div>
+  </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4>Pretraga:</h4>
+        <form>
+            <label>Ime:</label>
+            <input type="text" name='imePretraga' [(ngModel)]="imePretraga">
+            <br>
+          
+            <label>Prezime:</label>
+            <input type="text" name='prezimePretraga' [(ngModel)]="prezimePretraga">
+            <br>
+          
+            <label>Specijalizacija:</label>
+            <input type="text" name='specijalizacijaPretraga' [(ngModel)]="specijalizacijaPretraga">
+            <br>
+    
+            <label>Ogranak:</label>
+            <input type="text" name='ogranakPretraga' [(ngModel)]="ogranakPretraga">
+            <br>
+          
+            <button (click)="pretraziLekare()">Pretraži</button>
+          </form>
+        </div>     
+      </div>
+    </main>
+      <footer>
+        <p>&copy; 2023 Ordinacija Zdravlje</p>
+      </footer>
+      

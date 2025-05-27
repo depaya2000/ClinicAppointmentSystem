@@ -1,0 +1,73 @@
+<header>
+    <nav>
+        <ul>
+            <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+            <li><a href="menadzer">Profil</a></li>
+            <li><a href="zahtevi">Zahtevi</a></li>
+            <li><a href="uredi">Uredi</a></li>
+            <li><a href="promenaLozinke">Promena lozinke</a></li>
+            <li><button (click)="logout()">Odjavi se</button></li>
+        </ul>
+    </nav>
+    </header>
+      <div class="row">
+      <div class="col">
+      <h2>Zahtevi pacijenata za registracijom:</h2>
+      <div class="table-responsive">
+      <table border="1">
+        <tr>
+          <th>   Ime   </th>
+          <th>   Prezime   </th>
+          <th>   Adresa   </th>
+          <th>   Telefon   </th>
+          <th>   I-mejl adresa   </th>
+          <th>   Profilna slika   </th>
+        </tr>
+        <tr *ngFor='let z of zahteviPacijenti'>
+          <td>{{z.ime}}</td>
+          <td>{{z.prezime}}</td>
+          <td>{{z.adresa}}</td>
+          <td>{{z.telefon}}</td>
+          <td>{{z.mejl}}</td>
+          <td><img src='http://localhost:4000/uploads/{{ z.slika }}' alt="Profilna slika {{z.ime}}" class="profilnaSlika"></td>
+          <td><button (click)="prihvatiZahtev(z)">Prihvati</button></td>
+          <td><button (click)="odbijZahtev(z)">Odbij</button></td>
+        </tr>
+      </table>
+      <p class="greska">{{message1}}</p> 
+    </div>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="col">
+        <br>
+        <h2>Zahtevi lekara za novom vrstom pregleda:</h2>
+        <div class="table-responsive">
+        <table border="1">
+          <tr>
+            <th>   Naziv   </th>
+            <th>   Lekar   </th>
+            <th>   Specijalizacija   </th>
+            <th>   cena   </th>
+            <th>   trajanje   </th>
+          </tr>
+          <tr *ngFor='let p of zahteviVrstePregleda'>
+            <td>{{p.naziv}}</td>
+            <td>{{p.lekar}}</td>
+            <td>{{p.specijalizacija}}</td>
+            <td>{{p.cena}}</td>
+            <td>{{p.trajanje}}</td>
+            <td><button (click)="prihvatiZahtevPregleda(p)">Prihvati</button></td>
+            <td><button (click)="odbijZahtevPregleda(p)">Odbij</button></td>
+          </tr>
+        </table>
+        <p class="greska">{{message}}</p> 
+         </div>
+        </div>
+      </div>
+  
+        <footer>
+          <p>&copy; 2023 Ordinacija Zdravlje</p>
+        </footer>
+        

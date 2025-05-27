@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Ostali meta tagovi i stilovi -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+      <nav>
+        <ul>
+            <li><a href=""><img src="/assets/zdravlje.jpg" alt="Pocetna"></a></li>
+            <li><a href="lekar">Profil</a></li>
+            <li><a href="preglediLekar">Pregledi</a></li>
+            <li><a href="razno">Razno</a></li>
+            <li><button (click)="logout()">Odjavi se</button></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+        <div class="row">
+          <div class="col">
+            <h2>Osnovne informacije o pacijentu:</h2>
+            Ime: {{pacijent.ime}} <br/>
+            Prezime: {{pacijent.prezime}} <br/>
+            Adresa: {{pacijent.adresa}} <br/>
+          </div>
+        </div>
+          <div class="row">
+            <div class="col">
+                <h2>Izvestaji</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Datum izdavanja</th>
+                            <th>Vreme izdavanja</th>
+                            <th>Lekar</th>
+                            <th>Specijalizacija</th>
+                            <th>Razlog dolaska</th>
+                            <th>Dijagnoza</th>
+                            <th>Terapija</th>
+                            <th>Datum kontrole</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let p of sortirajIzvestajePoDatumu(izvestaji)'>
+                            <td>{{p.datumVreme.getFullYear()}}-{{p.datumVreme.getMonth()+1}}-{{p.datumVreme.getDate()}}</td>
+                            <td>{{p.datumVreme.getHours()}}:{{p.datumVreme.getMinutes()}}</td>
+                            <td>{{p.lekar}}</td>
+                            <td>{{p.specijalizacija}}</td>
+                            <td>{{p.razlogDolaska}}</td>
+                            <td>{{p.dijagnoza}}</td>
+                            <td>{{p.terapija}}</td>
+                            <td>{{p.datumKontrole.getFullYear()}}-{{p.datumKontrole.getMonth()+1}}-{{p.datumKontrole.getDate()}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+        </div>
+    </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Ordinacija Zdravlje</p>
+    </footer>
+</body>
+</html>
+
