@@ -1,5 +1,8 @@
 Clinic Appointment System – Scheduling and Management Platform
+
+
 Description
+
 This project is a web application for a medical clinic, supporting user roles such as patient, doctor, and manager. It enables appointment scheduling, cancellations, and management of medical reports.
 
 User Roles:
